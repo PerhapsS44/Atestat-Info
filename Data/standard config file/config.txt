@@ -1,0 +1,68 @@
+nume_nn: 2x+y
+min_V: 0
+max_V: 10
+min_R: 0
+max_R: 30
+inputs: 30000
+int_left_nn: 0
+int_right_nn: 1
+nn_lr: 0.12
+no_loops: 50
+training_p: 0.99
+efficency: 0.95
+error_margin: 0.2
+
+//*****************EXPLICATII**********************//
+
+// "nume_nn" reprezinta numele pe care il va avea fisierul ce contine reteaua neuronala;
+	CONDITII: *numele trebuie scris fara spatii, altfel programul va citi doar primul
+		sir de caractere. De exemplu: "nume_nn: 2x + y" se citeste ca  "nume_nn: 2x"
+		  *poate fi orice sir de caractere
+
+// "min_V" reprezinta cea mai mica valoare pe care o poate avea un numar din fisierul <variabile.txt>
+	CONDITII: *trebuie sa fie un numar real
+
+// "max_V" reprezinta cea mai mare valoare pe care o poate avea un numar din fisierul <variabile.txt>
+	CONDITII: *trebuie sa fie un numar real, mai mare decat "min_V"
+
+// "min_R" reprezinta cea mai mica valoare pe care o poate avea un numar din fisierul <rezultate.txt>
+	CONDITII: *trebuie sa fie un numar real
+
+// "max_R" reprezinta cea mai mare valoare pe care o poate avea un numar din fisierul <rezultate.txt>
+	CONDITII: *trebuie sa fie un numar real
+
+// "inputs" reprezinta numarul de seturi de date din fisierele <variabile.txt> si <rezultate.txt>
+	CONDITIIL: *trebuie sa fie un numar intreg pozitiv
+	OBSERVATII: *trebuie sa fie numarul de linii din fisierele <variabile.txt> si <rezultate.txt>
+
+// "int_left_nn" reprezinta cea mai mica valoare pe care o poate avea o variabila interna din reteaua neuronala 
+	CONDITII: *trebuie sa fie un numar real
+	OBSERVATII: *daca nu stiti sa ajustati aceasta valoare, lasati-o '0'
+
+// "int_right_nn" reprezinta cea mai mare valoare pe care o poate avea o variabila interna din reteaua neuronala 
+	CONDITII: *trebuie sa fie un numar real
+	OBSERVATII: *daca nu stiti sa ajustati aceasta valoare, lasati-o '1'
+
+// "nn_lr" reprezinta marimea pasilor pe care ii va face reteaua neuronala pentru a aproxima ecuatia cautata
+	CONDITII: *trebuie sa fie un numar real, pozitiv, de preferat intre '0' si '1'
+	OBSERVATII: *daca valoarea este prea mica, reteaua nu va putea aproxima ecuatia in timp util
+		    *daca valoarea este prea mare, reteaua nu va putea aproxima ecuatia niciodata
+
+// "no_loops" reprezinta numarul de epoci in care, teoretic, reteaua neuronala ar trebui sa aproximeze ecuatia cautata
+	CONDITII: *trebuie sa fie un numar intreg pozitiv
+	OBSERVATII: *programul este conceput in asa fel incat sa permita un numar de rulari de 5 ori mai mare decat 		   "no_loops" pentru a aproxima ecuatia cautata, dupa care o ia de la capat. Daca nu reuseste sa 
+		   aproximeze ecuatia cautata dupa 5 incercari, se opreste. Daca observati ca programul nu are suficient 		   timp ca sa aproximeze ecuatia cautata, mariti valoarea "no_loops"
+
+// "training_p" reprezinta procentul din numarul de seturi de date ce va fi folosit pentru a antrena reteaua neuronala
+	CONDITII: *trebuie sa fie un numar real, cuprins intre '0' si '1'
+	OBSERVATII: *valoarea aceasta se ajusteaza in functie de numarul de seturi de date disponibile
+		    *este necesar ca un numar de seturi de date sa fie folosit spre a testa reteaua neuronala pentru a 
+		   putea masura eficienta aproximarilor
+
+// "efficency" reprezinta procentul din totalitatea datelor de intrare pentru care aproximarea retelei neuronale 
+	este mai mica decat "error_margin"
+	CONDITII: *trebuie sa fie un numar real, cuprins intre '0' si '1'
+
+// "error_margin" reprezinta eroarea maxima acceptata de reteaua neuronala in procesul de evaluare a aproximarii
+	CONDITII: *trebuie sa fie un numar real pozitiv
+	OBSERVATII: *atentie cand setati aceasta valoare; una prea mica ar putea duce la o durata de timp foarte mare 		   pentru ca programul sa se finalizeze

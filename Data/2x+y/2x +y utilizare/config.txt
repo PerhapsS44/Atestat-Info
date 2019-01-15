@@ -1,0 +1,6 @@
+min_V: 0 // the minimum value of the input variable
+max_V: 10 // the maximum value of the input variable
+min_R: 0 // the minimum value of the output variable
+max_R: 30 // the maximum value of the output variable
+
+//// de infrumusetat acest config file
